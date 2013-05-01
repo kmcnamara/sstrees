@@ -12,9 +12,9 @@ import commands
 
 ### Setup ###
 
-click = '~/BIMM185/Click/click.py'
-click_dir = '~/BIMM185/Click/'
-pdb_dir = '~/BIMM185/pdbs/'
+click = '/home/kyle/BIMM185/Click/click.py'
+click_dir = '/home/kyle/BIMM185/Click'
+pdb_dir = '/home/kyle/BIMM185/pdbs'
 
 ### Functions ###
 
@@ -48,49 +48,64 @@ def splitLines(filename):
 # return: float RMSD
 # Run structure alignment on the two input structures and return the RMSD
 def runAlignment(pdb1, pdb2):
-    align = click +' '+ pdb_dir + pdb1 +' '+ pdb_dir + pdb2
-    commands.getoutput(align)
+    align = click +' '+ pdb_dir +'/'+ pdb1 +' '+ pdb_dir +'/'+ pdb2
+    result = commands.getoutput(align)
     # Output clique file looks like "XXXX-YYYY.pdb.1.clique"
-    clique = pdb1[:-4] +'-'+ pdb2 +'.1.clique'
+    clique = pdb_dir +'/'+ pdb1[:-4] +'-'+ pdb2 +'.1.clique'
     # Output the first 2 lines of the clique file
     result = commands.getoutput('head -2 '+ clique)
     # Split by '\n', take index[1], then split by ' ', take index[2]
     RMSD = result.split('\n') # ['The number ... = 206', 'RMSD = 1.18']
     RMSD = RMSD[1].split()    # ['RMSD', '=', '1.18']
     RMSD = RMSD[2]            # '1.18'
-    # Cast string to float
-    return float(RMSD)
+    # Return the RMSD
+    return RMSD
 # End of runAlignment
 
 ### End of Functions ###
 
 ### Main ###
 
+print '\nRunning runClick.py...'
 # Usage
 if(len(sys.argv) != 2):
-    print 'Usage: '+ argv[0] + ' <PDBList>'
-    sys.exit()
+    sys.stderr.write('Usage: '+ sys.argv[0] + ' <PDBList>\n\n')
+    sys.exit(1)
 
-os.system('cd '+ click_dir)
-
+# Read in the .pdb file names
 pdbs = splitLines(sys.argv[1])
-RMSD_matrix = [[]]
-for pdbA in len(pdbs):
-    for pdbB in len(pdbs):
-        if(pdbB < pdbA):
-            RMSD_matrix[pdbA].append(runAlignment(pdbs[pdbA][0],
-                                                  pdbs[pdbB][0]))
-        else:
-            RMSD_matrix[pdbA].append(float(0))
-output = ''
-for row in len(RMSD_matrix):
-    for col in len(RMSD_matrix[0]):
-        output += (RMSD_matrix[row][col] + ',')
-    output += '\n'
+
+# Change directory to location of click.py script
+os.chdir(click_dir)
+
+# Initialize distance matrix with zeros
+RMSD_matrix = []
+for row in range( len(pdbs) ):
+    RMSD_matrix.append([])
+    for col in range( len(pdbs) ):
+        RMSD_matrix[row].append('0.0')
+
+for A in range( len(pdbs) ):
+    for B in range( len(pdbs) ):
+        if(B < A):
+            # Fill in matrix[A][B] and matrix[B][A] with RMSD value
+            RMSD_matrix[A][B] = runAlignment(pdbs[A][0], pdbs[B][0])
+            RMSD_matrix[B][A] = RMSD_matrix[A][B]
+
+# Return to location of pdb files to create output file
+os.chdir(pdb_dir)
 
 outfile = open('clickRMSD.out', 'w')
+for A in range( len(pdbs) ):
+    outfile.write( '\t' + pdbs[A][0][:-4] )
+# Send distance matrix numbers to output file
+for row in range( len(RMSD_matrix) ):
+    outfile.write( '\n' + pdbs[row][0][:-4] )
+    for col in range( len(RMSD_matrix[0]) ):
+        outfile.write( '\t' + RMSD_matrix[row][col]  )
+outfile.write( '\n' )
+outfile.close()
 
-
-os.system('cd '+ pdb_dir)
+print 'Distance matrix written to clickRMSD.out\n'
 
 #### End of Main ###
