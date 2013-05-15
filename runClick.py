@@ -96,13 +96,13 @@ for A in range( len(pdbs) ):
 os.chdir(pdb_dir)
 
 outfile = open('clickRMSD.out', 'w')
-for A in range( len(pdbs) ):
-    outfile.write( '\t' + pdbs[A][0][:-4] )
+# Follow PHYLIP distance matrix format
+outfile.write( str(len(pdbs)) )
 # Send distance matrix numbers to output file
 for row in range( len(RMSD_matrix) ):
-    outfile.write( '\n' + pdbs[row][0][:-4] )
+    outfile.write( '\n' + pdbs[row][0][:-4] + '         ' )
     for col in range( len(RMSD_matrix[0]) ):
-        outfile.write( '\t' + RMSD_matrix[row][col]  )
+        outfile.write( ' ' + RMSD_matrix[row][col]  )
 outfile.write( '\n' )
 outfile.close()
 

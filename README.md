@@ -1,16 +1,17 @@
-Scripts
+Sequence Versus Structure
 =======
 
 Kyle McNamara
 kmcnamara@ucsd.edu
 
-This directory contains all the python scripts used to control the work flow
+This is a collection of all the source code used to control the work flow
 for all the prediction, alignment, and tree drawing software used in this
 project.
 
 Prediction and Alignment Prep
 -----------------------------
 
+* runClustal.sh
 <i>Work in progress.</i>
 
 Alignment
@@ -28,10 +29,28 @@ distance matrix to be passed along to the tree drawing program.
 Tree Calculation and Illustration
 ---------------------------------
 
-<i>Work in progress.</i>
+* neighborjoin.sh
+* drawunrooted.py
+* drawunrootedcircular.py
 
 
+Installed Programs, Libraries, and Dependencies
+-----------------------------------------------
+
+This is a list of all the installed software being used for this project.
+
+* I-TASSER		(structure prediction)
+* DeepAlign		(structure alignment)
+* FATCAT		(structure alignment)
+* Click			(structure alignment)
+* Modeller		(for use by Click)
+* Matt			(structure alignment)
+* ClustalW		(sequence alignment)
+* PHYLIP		(tree construction)
+* Ete2			(tree drawing)
+* BioPython		(pdb file handling)
+* Numpy
+* Scipy
 
 
-
-<i>Updated 4/30/13</i>
+<i>Updated 5/15/13</i>
