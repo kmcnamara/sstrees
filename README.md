@@ -2,6 +2,7 @@ Sequence Versus Structure
 =======
 
 Kyle McNamara
+
 kmcnamara@ucsd.edu
 
 This is a collection of all the source code used to control the work flow
@@ -11,8 +12,11 @@ project.
 Prediction and Alignment Prep
 -----------------------------
 
+* splitPDB.py
+* pullSeqFromPDB.py
 * runClustal.sh
-<i>Work in progress.</i>
+* kmutils.py
+* runPrediction.sh
 
 Alignment
 ---------
@@ -53,4 +57,4 @@ This is a list of all the installed software being used for this project.
 * Scipy
 
 
-<i>Updated 5/15/13</i>
+<i>Updated 5/19/13</i>
