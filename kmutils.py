@@ -41,9 +41,30 @@ def scaleRMSD(RMSD, maxval):
   for row in range(len(RMSD)):
     scaled.append([])
     for col in range(len(RMSD[row])):
-      scaled[row].append( str( float(RMSD[row][col]) / maxval ) )
+      if( row == col):
+        # Skip over diagonal zeros
+        scaled[row].append('0.0')
+      else:
+        scaled[row].append( str( float(RMSD[row][col]) / maxval ) )
   return scaled
 # End of scaleRMSD
+
+# scaleFakeTM
+# input: Scores[[]], int maxval
+# return: scaled[[]]
+# Scale Scores to a [0,1] scale, then do (1 - value) for each score
+def scaleFakeTM(Scores, maxval):
+  scaled = []
+  for row in range(len(Scores)):
+    scaled.append([])
+    for col in range(len(Scores[row])):
+      if( row == col):
+        # Skip over diagonal zeros
+        scaled[row].append('0.0')
+      else:
+        score = 1.00 - ( float(Scores[row][col]) / maxval )
+        scaled[row].append( str(score) )
+  return scaled
 
 ### PDB to fasta
 

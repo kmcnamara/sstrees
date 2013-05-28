@@ -17,7 +17,7 @@ from kmutils import fileToList, splitLines, scaleRMSD
 click = '/home/kyle/BIMM185/Click/click.py'
 click_opt = ' -s 0'
 click_dir = '/home/kyle/BIMM185/Click'
-pdb_dir = '/home/kyle/BIMM185/pdbs'
+pdb_dir = '/home/kyle/BIMM185/pdbs/test'
 
 ### Functions ###
 
@@ -48,11 +48,12 @@ def runAlignment(pdb1, pdb2):
 
 ### Main ###
 
-print '\nRunning runClick.py...'
 # Usage
 if(len(sys.argv) != 2):
-    sys.stderr.write('Usage: '+ sys.argv[0] + ' <PDBList>\n\n')
+    sys.stderr.write('\nUsage: '+ sys.argv[0] + ' <PDBList>\n\n')
     sys.exit(1)
+
+print '\nRunning runClick.py...'
 
 # Read in the .pdb file names
 pdbs = splitLines(sys.argv[1])
@@ -78,7 +79,7 @@ for A in range( len(pdbs) ):
               maxval = float(RMSD_matrix[A][B])
 
 # Scale the RMSD matrix
-RMSD_matrix = scaleRMSD( RMSD_matrix, maxval )
+RMSD_matrix[:] = scaleRMSD( RMSD_matrix, maxval )
 
 # Return to location of pdb files to create output file
 os.chdir(pdb_dir)
