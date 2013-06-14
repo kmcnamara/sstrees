@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<!-- BASE -->
+<head>
+  <title>SVS</title>
+  <meta name="svs">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <!-- Bootstrap -->
+  <link href="css/override.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+  <script src="js/bootstrap.min.js"></script>
+  <div class="navbar navbar-fixed-top top-bar-font">
+    <div class="navbar-inner navbar-style">
+
+      <div class="container user-container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+        </a> <a class="brand" href="index.html">SVS</a>
+        <div class="nav-collapse">
+          <ul id="nav-link" class="nav nav-style">
+            <li class="divider-vertical"></li>
+            <li><a href="index.html">Home</a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="analysis.html">Analysis</a></li>
+            <li class="divider-vertical"></li>
+            <li class="active"><a href="about.html">About</a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="divider-vertical"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- END BASE -->
+
+  <div class="container user-container">
+  <br><br><br>
+  <div class="row">
+   <div class="span1">
+   </div>
+   <div class="span6">
+   <div class="well">
+    <h2>About</h2>
+    <h4>Brief Background</h4>
+    <p><b>Traditionally, phylogenetic trees based on sequence
+       alignment are the go-to tool for analyzing comparisons between proteins
+       in a set of interest. These trees are especially useful for giving
+       insight into the evolutionary hierarchy of the set of proteins. Adding
+       phylogenetic trees based on structure alignment into the mix provides
+       an alternative perspective for analysis. Trees based on structure
+       reflect the differences and similarities in the shape and fold of the
+       proteins. With the mantra "structure determines function" in mind, the
+       structure based trees can give insight into how proteins relate to each
+       other based on function. The structure based tree is not meant to be
+       a replacement for sequence based tree but rather an alternative tool,
+       with a different basis, for use in comparing and contrasting the
+       evolutionary and functional characteristics of proteins.</b></p>
+    <h4>TL;DR</h4>
+    <p><b>SVS is a protein comparison tool that utilizes both sequence alignment
+       and structure alignment to produce two potentially different
+       phylogenetic trees.</b></p>
+    <h4>How To Use SVS</h4>
+    <p><b>On the analysis page, simply enter a list of PDB IDs and a project
+    title and hit submit. Next, you are presented with a list of structural
+    alignment algorithms to choose from. And, you can choose which chains to
+    include from the proteins entered initially. After hitting submit, the
+    algorithm will take some minutes to run (potentially many if a large
+    number of proteins/chains are requested). Finally, you are presented with
+    two image files, one for the structure-based tree and one for the
+    sequence-based tree.</b><br><br><b>
+    While you can select which structure alignment algorithm to use to produce
+    the structure-based tree, the sequence-based tree is always produced
+    using ClustalW.
+    </b></p>
+    <h4>Read Further</h4>
+    <p><b>For a more in depth discussion of this project check out
+    <a href="https://onelaboratory.org/figures/album/2245">OneLab</a>.<br>
+    For a look at the scripts behind SVS check out
+    <a href="https://github.com/kmcnamara/sstrees/">Github</a>.</b></p>
+   </div><!--End Well-->
+   </div><!--End span6-->
+  </div> <!--End Row-->
+  </div> <!--End container-->
+
+</body>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+</html>

@@ -6,14 +6,13 @@
 # XXXX_B.pdb, and XXXX_C.pdb.
 
 # sys.argv[1] -- the filename of the .pdb file
-# sys.argv[2] -- the desired prefix name for the output chain files
 
 import sys
 
 from kmutils import fileToList, splitLines
 
-if( len(sys.argv) != 3 ):
-  print "Usage: " + sys.argv[0] + " <.pdb file> <name>"
+if( len(sys.argv) != 2 ):
+  print "Usage: " + sys.argv[0] + " <.pdb file>"
   exit(0)
 
 pdb_lines = []
@@ -29,7 +28,7 @@ for line in pdb_lines:
 
 # Output a file for each chain
 for chain in chains:
-  out_pdb = open( sys.argv[2]+'_'+chain+'.pdb', 'w' )
+  out_pdb = open( sys.argv[1][:-4]+'_'+chain+'.pdb', 'w' )
 
   for line in pdb_lines:
     if( line[:4] == 'ATOM' ):
@@ -44,6 +43,8 @@ for chain in chains:
     elif( line[:3] == 'TER' ):
       if( line[21] != chain ):
         continue
+    elif( line[:6] == 'COMPND' and line[9] == '3' ):
+      continue
 
     out_pdb.write( line )
 

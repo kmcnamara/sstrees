@@ -48,7 +48,7 @@ for i in range( len(seq) ):
   if( i % 80 == 0 ):
     fa.write( '\n' )
   fa.write( seq[i] )
-
+fa.write( '\n' )
 fa.close()
 
 # End of pullSeqFromPDB.py

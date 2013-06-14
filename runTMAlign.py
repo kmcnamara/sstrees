@@ -5,6 +5,7 @@
 # in a given set.
 
 # sys.argv[1] -- input list of .pdb file names to align
+# sys.argv[2] -- project directory
 
 import sys
 import os
@@ -14,8 +15,8 @@ from kmutils import fileToList, splitLines
 
 ### Setup ###
 
-tmalign = '/home/kyle/BIMM185/TMAlign/TMalign'
-pdb_dir = '/home/kyle/BIMM185/pdbs/test/'
+tmalign = '/home/kylem/BIMM185/TMAlign/TMalign'
+pdb_dir = sys.argv[2]
 
 ### Functions ###
 
@@ -36,11 +37,6 @@ def runAlignment(pdb1, pdb2):
 ### End of Functions ###
 
 ### Main ###
-
-# Usage
-if(len(sys.argv) != 2):
-    sys.stderr.write('\nUsage: '+ sys.argv[0] + ' <PDBList>\n\n')
-    sys.exit(1)
 
 print '\nRunning runTMAlign.py...'
 

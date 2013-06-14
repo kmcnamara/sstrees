@@ -5,6 +5,7 @@
 # in a given set.
 
 # sys.argv[1] -- input list of .pdb file names to align
+# sys.argv[2] -- project directory
 
 import sys
 import os
@@ -14,10 +15,10 @@ from kmutils import fileToList, splitLines, scaleRMSD
 
 ### Setup ###
 
-click = '/home/kyle/BIMM185/Click/click.py'
+click = '/home/kylem/BIMM185/Click/click.py'
 click_opt = ' -s 0'
-click_dir = '/home/kyle/BIMM185/Click'
-pdb_dir = '/home/kyle/BIMM185/pdbs/test'
+click_dir = '/home/kylem/BIMM185/Click'
+pdb_dir = sys.argv[2]
 
 ### Functions ###
 
@@ -47,11 +48,6 @@ def runAlignment(pdb1, pdb2):
 ### End of Functions ###
 
 ### Main ###
-
-# Usage
-if(len(sys.argv) != 2):
-    sys.stderr.write('\nUsage: '+ sys.argv[0] + ' <PDBList>\n\n')
-    sys.exit(1)
 
 print '\nRunning runClick.py...'
 

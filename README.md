@@ -9,14 +9,21 @@ This is a collection of all the source code used to control the work flow
 for all the prediction, alignment, and tree drawing software used in this
 project.
 
-Prediction and Alignment Prep
+Master scripts
+--------------
+* masterHandle.py
+* handleSeqTree.py
+
+Alignment Prep
 -----------------------------
 
 * splitPDB.py
+* runsplitPDB.py
 * pullSeqFromPDB.py
 * runClustal.sh
 * kmutils.py
-* runPrediction.sh
+* makeChainFile.py
+* getStuctures.py
 
 Alignment
 ---------
@@ -36,8 +43,18 @@ Tree Calculation and Illustration
 ---------------------------------
 
 * neighborjoin.sh
-* drawunrooted.py
-* drawunrootedcircular.py
+* printunrooted.py
+
+Webpage
+-------
+
+* index.html
+* analysis.html
+* input.php
+* result.php
+* about.html
+* contact.html
+* override.css
 
 
 Installed Programs, Libraries, and Dependencies
@@ -45,7 +62,6 @@ Installed Programs, Libraries, and Dependencies
 
 This is a list of all the installed software being used for this project.
 
-* I-TASSER		(structure prediction)
 * DeepAlign		(structure alignment)
 * FATCAT		(structure alignment)
 * Click			(structure alignment)
@@ -54,9 +70,8 @@ This is a list of all the installed software being used for this project.
 * TMalign		(structure alignment)
 * ClustalW		(sequence alignment)
 * PHYLIP		(tree construction)
-* Ete2			(tree drawing)
-* Numpy			(used by Ete2)
-* Scipy			(used by Ete2)
+* Mechanize             (Python - tree printing)
+* Bootstrap             (webpage)
 
 
 

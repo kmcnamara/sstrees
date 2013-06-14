@@ -5,6 +5,7 @@
 # in a given set.
 
 # sys.argv[1] -- input list of .pdb file names to align
+# sys.argv[2] -- project directory
 
 import sys
 import os
@@ -16,7 +17,7 @@ from kmutils import fileToList, splitLines, scaleFakeTM
 
 fatcat = 'sh /home/kyle/BIMM185/scripts/Fatcat.sh'
 #fatcat_dir = '/home/kyle/BIMM185/jfatcat/'
-pdb_dir = '/home/kyle/BIMM185/pdbs/test/'
+pdb_dir = sys.argv[2]
 fatcat_opt = ' -pdbFilePath '+pdb_dir+' -flexible true -printFatCat true'
 
 ### Functions ###
@@ -49,11 +50,6 @@ def runAlignment(pdb1, pdb2):
 ### End of Functions ###
 
 ### Main ###
-
-# Usage
-if(len(sys.argv) != 2):
-    sys.stderr.write('\nUsage: '+ sys.argv[0] + ' <PDBList>\n\n')
-    sys.exit(1)
 
 print '\nRunning runFatcat.py...'
 

@@ -5,6 +5,7 @@
 # in a given set.
 
 # sys.argv[1] -- input list of .pdb file names to align
+# sys.argv[2] -- project directory
 
 import sys
 import os
@@ -14,9 +15,9 @@ from kmutils import fileToList, splitLines
 
 ### Setup ###
 
-deep = '/home/kyle/BIMM185/DeepAlign_exe_V1.00/DeepAlign_linux'
-deep_dir = '/home/kyle/BIMM185/DeepAlign_exe_V1.00/'
-pdb_dir = '/home/kyle/BIMM185/pdbs/test/'
+deep = '/home/kylem/BIMM185/DeepAlign_exe_V1.00/DeepAlign_linux'
+deep_dir = '/home/kylem/BIMM185/DeepAlign_exe_V1.00/'
+pdb_dir = sys.argv[2]
 
 ### Functions ###
 
@@ -43,8 +44,8 @@ def runAlignment(pdb1, pdb2):
 ### Main ###
 
 # Usage
-if(len(sys.argv) != 2):
-    sys.stderr.write('\nUsage: '+ sys.argv[0] + ' <PDBList>\n\n')
+if(len(sys.argv) != 3):
+    sys.stderr.write('\nUsage: '+ sys.argv[0] + ' <PDBList> <proj dir>\n\n')
     sys.exit(1)
 
 print '\nRunning runDeepAlign.py...'

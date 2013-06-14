@@ -6,4 +6,4 @@
 # $1 -- multi-fasta file
 # $2 -- output tree filename
 
-echo `~/BIMM185/clustalw-2.1/src/clustalw2 -tree -INFILE=$1 -outfile=$2 -output=PHYLIP`
+echo `/home/kylem/BIMM185/clustalw-2.1/clustalw2 -tree -INFILE=$1 -outfile=$2 -output=PHYLIP`

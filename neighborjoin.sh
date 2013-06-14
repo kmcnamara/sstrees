@@ -7,7 +7,6 @@
 # This script takes two arguments, both filenames for the distance matrix
 # file and the file containing options to use in neighbor.
 
-# $1 -- distance matrix
-# $2 -- options file
+# $1 -- options file
 
-echo `/home/kyle/BIMM185/phylip*/exe/neighbor < $1 < $2`
+echo `/home/kylem/BIMM185/phylip*/exe/neighbor < $1 `
